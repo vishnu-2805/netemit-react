@@ -16,21 +16,19 @@ export default function NavBar() {
   return (
     <nav style={s.nav}>
       <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}`}</style>
-      <div style={s.inner}>
-        <NavLink to="/" style={s.logo}>Net<em style={s.em}>Emit</em></NavLink>
-        {[['/', 'Home'], ['/measure','Measure'], ['/habit','My Habit'], ['/leaderboard','Leaderboard'], ['/about','About']].map(([path, label]) => (
-          <NavLink key={path} to={path} end={path==='/'} style={({ isActive }) => ({ ...s.link, ...(isActive ? activeStyle : {}) })}>
-            {label}
-          </NavLink>
-        ))}
-        <button onClick={onLogout}
-  style={{ marginLeft:'auto', fontFamily:"'DM Mono',monospace", fontSize:11, color:'#888', background:'transparent', border:'1px solid rgba(255,255,255,.1)', padding:'5px 14px', borderRadius:8, cursor:'pointer', transition:'all .2s' }}
-  onMouseEnter={e=>{e.target.style.color='#ff4444';e.target.style.borderColor='rgba(255,68,68,.3)';}}
-  onMouseLeave={e=>{e.target.style.color='#888';e.target.style.borderColor='rgba(255,255,255,.1)';}}>
-  Sign out
-</button>
-        <div style={s.badge}><span style={s.dot}></span>SDG 13</div>
-      </div>
+      <div style={{marginLeft:'auto',display:'flex',alignItems:'center',gap:10}}>
+  {user?.photoURL && (
+    <img src={user.photoURL} alt="profile"
+      style={{width:28,height:28,borderRadius:'50%',border:'2px solid rgba(0,255,135,.3)'}}/>
+  )}
+  <span style={{fontFamily:"'DM Mono',monospace",fontSize:11,color:'#aaa'}}>
+    {user?.displayName?.split(' ')[0]}
+  </span>
+  <button onClick={onLogout}
+    style={{fontFamily:"'DM Mono',monospace",fontSize:11,color:'#888',background:'transparent',border:'1px solid rgba(255,255,255,.1)',padding:'5px 12px',borderRadius:8,cursor:'pointer'}}>
+    Sign out
+  </button>
+</div>
     </nav>
   );
 }
