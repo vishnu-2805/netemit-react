@@ -5,7 +5,7 @@ import { Orbs, Wrap, Card, Label, PageHeader, Badge, EqBox, StatCard, Footer, To
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const API = 'http://127.0.0.1:5000';
+const API = 'https://netemit-backend.onrender.com';
 
 export default function Measure() {
   const [url, setUrl] = useState('');
